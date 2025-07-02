@@ -19,15 +19,20 @@
         .content-section.active {
             display: block;
         }
+        /* Custom styles for mobile menu animation */
+        .mobile-menu-transition {
+            transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+            overflow: hidden; /* Ensures content is clipped during transition */
+        }
     </style>
 </head>
 <body class="antialiased">
     <div class="min-h-screen flex flex-col">
         <!-- Header -->
-        <header class="bg-gradient-to-r from-emerald-200 to-purple-200 text-gray-800 p-6 shadow-lg rounded-b-xl">
-            <div class="container mx-auto flex items-center justify-between md:justify-between">
-                <!-- Brand Logo - Left on Desktop, Centered on Mobile (visually) -->
-                <h1 class="text-4xl font-extrabold tracking-tight text-center flex-grow md:flex-grow-0 md:text-left">
+        <header class="bg-gradient-to-r from-emerald-200 to-purple-200 text-gray-800 p-6 shadow-lg rounded-b-xl relative">
+            <div class="container mx-auto flex items-center justify-between">
+                <!-- Brand Logo -->
+                <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight">
                     <img src="https://i.ibb.co/7d6s1TPm/logo.png" alt="Hues By Husna Logo" class="h-12 mx-auto md:mx-0 rounded-full border-2 border-white">
                 </h1>
 
@@ -38,9 +43,9 @@
                     </svg>
                 </button>
 
-                <!-- Navigation Links (Hidden on Mobile, Visible on Desktop) -->
-                <nav id="mobile-menu" class="hidden md:block w-full md:w-auto">
-                    <ul class="flex flex-col md:flex-row justify-center md:justify-end space-y-2 md:space-y-0 md:space-x-6 text-lg mt-4 md:mt-0">
+                <!-- Desktop Navigation Links -->
+                <nav id="desktop-menu" class="hidden md:block w-full md:w-auto">
+                    <ul class="flex flex-col md:flex-row justify-center md:justify-end space-y-2 md:space-y-0 md:space-x-6 text-lg">
                         <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="home-section">Home</a></li>
                         <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="products-section">Products</a></li>
                         <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="contact-section">Contact</a></li>
@@ -48,6 +53,15 @@
                     </ul>
                 </nav>
             </div>
+            <!-- Mobile Navigation Links (appears below the main header row) -->
+            <nav id="mobile-menu" class="md:hidden w-full bg-green-100 rounded-b-xl shadow-md absolute top-full left-0 z-10 mobile-menu-transition max-h-0 opacity-0">
+                <ul class="flex flex-col items-center space-y-2 text-lg py-2">
+                    <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="home-section">Home</a></li>
+                    <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="products-section">Products</a></li>
+                    <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="contact-section">Contact</a></li>
+                    <li><a href="#" class="nav-link text-gray-700 hover:text-gray-900 transition-transform duration-300 hover:scale-110 inline-block" data-section="about-us-section">About Us</a></li>
+                </ul>
+            </nav>
         </header>
 
         <!-- Main Content Area -->
@@ -55,7 +69,7 @@
 
             <!-- Home Section -->
             <section id="home-section" class="content-section active text-center mb-12">
-                <h2 class="text-5xl font-bold text-gray-800 mb-4">Welcome to Hues By Husna!</h2>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Welcome to Hues By Husna!</h2>
                 <p class="text-xl text-gray-600 max-w-2xl mx-auto">
                     Discover our charming collection of comfortable, stylish, and fun clothing designed especially for your little ones.
                     We believe in quality and comfort, ensuring your kids can play and grow with ease.
@@ -74,7 +88,7 @@
             <!-- Products Section -->
             <section id="products-section" class="content-section">
                 <section class="text-center mb-12">
-                    <h2 class="text-5xl font-bold text-gray-800 mb-4">Our Adorable Collection</h2>
+                    <h2 class="text-4xl font-bold text-gray-800 mb-4">Our Adorable Collection</h2>
                     <p class="text-xl text-gray-600">Comfortable, stylish, and fun clothing for your little ones.</p>
                 </section>
 
@@ -173,7 +187,7 @@
 
             <!-- About Us Section -->
             <section id="about-us-section" class="content-section text-center p-8 bg-white rounded-xl shadow-lg">
-                <h2 class="text-5xl font-bold text-gray-800 mb-4">About Hues By Husna</h2>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">About Hues By Husna</h2>
                 <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-6">
                     At Hues By Husna, we believe that childhood should be filled with joy, comfort, and endless adventures.
                     That's why we meticulously design and curate a collection of high-quality, adorable, and durable clothing
@@ -193,7 +207,7 @@
 
             <!-- Contact Section -->
             <section id="contact-section" class="content-section text-center p-8 bg-white rounded-xl shadow-lg">
-                <h2 class="text-5xl font-bold text-gray-800 mb-4">Contact Us</h2>
+                <h2 class="text-4xl font-bold text-gray-800 mb-4">Contact Us</h2>
                 <p class="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-6">
                     We'd love to hear from you! Whether you have a question about our products, an inquiry about an order,
                     or just want to say hello, feel free to reach out.
@@ -218,7 +232,7 @@
                 <p class="mt-2">Follow us on social media!</p>
                 <div class="flex justify-center space-x-4 mt-2">
                     <a href="#" class="text-gray-400 hover:text-white">Facebook</a>
-                    <a href="#" class="text-gray-400 hover:text-white">Instagram</a>
+                    <a href="https://www.instagram.com/huss_and_hus/" class="text-gray-400 hover:text-white">Instagram</a>
                     <a href="#" class="text-gray-400 hover:text-white">Pinterest</a>
                 </div>
             </div>
@@ -234,10 +248,16 @@
             const contentSections = document.querySelectorAll('.content-section');
             const whatsappButtons = document.querySelectorAll('.whatsapp-button');
 
-            // Toggle mobile menu visibility
+            // Toggle mobile menu visibility with smooth transition
             hamburgerButton.addEventListener('click', () => {
-                mobileMenu.classList.toggle('hidden');
-                mobileMenu.classList.toggle('block'); // Use 'block' for vertical stacking
+                if (mobileMenu.classList.contains('max-h-0')) {
+                    mobileMenu.classList.remove('max-h-0', 'opacity-0');
+                    // Set a specific max-height that is large enough to contain all menu items
+                    mobileMenu.classList.add('max-h-[200px]', 'opacity-100');
+                } else {
+                    mobileMenu.classList.remove('max-h-[200px]', 'opacity-100');
+                    mobileMenu.classList.add('max-h-0', 'opacity-0');
+                }
             });
 
             // Function to show a specific section and hide others
@@ -252,9 +272,9 @@
                     console.error('Target section element not found:', sectionId);
                 }
                 // Hide mobile menu after a nav link is clicked, if on mobile
-                if (!mobileMenu.classList.contains('hidden') && window.innerWidth < 768) { // 768px is Tailwind's 'md' breakpoint
-                    mobileMenu.classList.add('hidden');
-                    mobileMenu.classList.remove('block');
+                if (mobileMenu.classList.contains('max-h-[200px]') && window.innerWidth < 768) {
+                    mobileMenu.classList.remove('max-h-[200px]', 'opacity-100');
+                    mobileMenu.classList.add('max-h-0', 'opacity-0');
                 }
             };
 
