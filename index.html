@@ -564,11 +564,17 @@
                 font-size: 0.85rem; /* Adjusted */
             }
             .product-card img {
-                height: 9rem; /* Adjusted */
+                height: 16rem; /* Increased height for better visibility with object-fit: contain */
+                object-fit: contain; /* Ensure full image is visible */
+            }
+            .product-card-content {
+                padding: 0.75rem; /* Reduced padding for a more minimal look */
             }
             .product-card h3 {
-                font-size: 1rem; /* Adjusted */
+                font-size: 1.1rem; /* Adjusted */
+                margin-bottom: 0.75rem; /* Added margin-bottom for spacing with button */
             }
+            /* Product description is removed, so this rule is less critical but kept for other p tags */
             .product-card p {
                 font-size: 0.75rem; /* Adjusted */
             }
@@ -579,6 +585,7 @@
             .content-card {
                 padding: 1.5rem; /* Adjusted padding for content cards on mobile */
                 width: 100%; /* Ensure content card takes full width of container's content area */
+                max-width: 400px; /* Increased max-width for content cards */
                 margin: 0 auto; /* Center the card */
             }
             .content-card h3 {
@@ -611,7 +618,7 @@
             /* Ensure individual product cards are centered with max-width */
             .product-card {
                 width: 100%; /* Take full width of its grid cell */
-                max-width: 320px; /* Constrain max width for larger mobile screens */
+                max-width: 420px; /* Increased max width for product cards */
                 margin: 0 auto; /* Center the card within its grid column */
             }
         }
@@ -636,8 +643,11 @@
             }
             /* Ensure individual product cards are centered with max-width for smaller screens too */
             .product-card {
-                max-width: 280px; /* Adjust max width for very small screens */
+                max-width: 360px; /* Adjusted max width for very small screens */
                 margin: 0 auto;
+            }
+            .product-card img {
+                height: 14rem; /* Slightly adjusted height for very small screens */
             }
         }
 
@@ -830,42 +840,42 @@
                     id: 1,
                     name: 'Daisy Crochet Dress',
                     description: 'A charming dress with a delicate daisy crochet top and a soft cotton skirt, perfect for toddlers from 1-3 years.',
-                    imageUrl: 'https://placehold.co/400x400/C3D9C3/6B8E6B?text=Daisy+Dress',
+                    imageUrl: 'https://www.babyforest.in/cdn/shop/files/1_52dd024c-7618-467d-b71d-cb0abfb701c8.jpg?v=1707460352',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Daisy Crochet Dress. Could you please provide more details?',
                 },
                 {
                     id: 2,
                     name: 'Blossom Fairy Dress',
                     description: 'An ethereal dress featuring intricate floral crochet on the bodice and a flowing, lightweight fabric skirt for little fairies, suitable for 4-6 years.',
-                    imageUrl: 'https://placehold.co/400x400/F0D4BB/6B8E6B?text=Blossom+Dress',
+                    imageUrl: 'https://www.shutterstock.com/image-photo/beautiful-handmade-croheted-clothes-children-600nw-2172114859.jpg',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Blossom Fairy Dress. Could you please provide more details?',
                 },
                 {
                     id: 3,
                     name: 'Sunshine Ruffle Frock',
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active girls aged 2-5 years.',
-                    imageUrl: 'https://placehold.co/400x400/E0D0E8/6B8E6B?text=Sunshine+Frock',
+                    imageUrl: 'https://kreateworld.in/cdn/shop/products/3afda368-303d-4374-a4db-ec4703a4c2dd.png?v=1673604486',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Sunshine Ruffle Frock. Could you please provide more details?',
                 },
                 {
                     id: 4,
                     name: 'Enchanted Garden Gown',
                     description: 'A beautiful gown with a detailed garden-themed crochet top and a voluminous skirt, perfect for special occasions for girls 7-10 years.',
-                    imageUrl: 'https://placehold.co/400x400/F1E0E0/6B8E6B?text=Garden+Gown',
+                    imageUrl: 'https://www.babyforest.in/cdn/shop/files/3_5bcf4b78-6fc7-4df4-8b9c-a78556951a23_2000x2000.jpg?v=1743052777',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Enchanted Garden Gown. Could you please provide more details?',
                 },
                 {
                     id: 5,
                     name: 'Sweet Dreams Romper',
                     description: 'A cozy romper with a soft crochet top and comfortable fabric bottom, designed for newborns and infants up to 12 months.',
-                    imageUrl: 'https://placehold.co/400x400/C3D9C3/6B8E6B?text=Sweet+Romper',
+                    imageUrl: 'https://kreateworld.in/cdn/shop/products/6b456ad9-8f8c-4722-92bd-6ab3a8145657_1000x.jpg?v=1672643932',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Sweet Dreams Romper. Could you please provide more details?',
                 },
                 {
                     id: 6,
                     name: 'Ocean Breeze Tunic',
                     description: 'A light and airy tunic with a wave-patterned crochet top and breathable fabric, great for summer days for girls 3-6 years.',
-                    imageUrl: 'https://placehold.co/400x400/F0D4BB/6B8E6B?text=Ocean+Tunic',
+                    imageUrl: 'https://www.thehandycrafts.pk/cdn/shop/products/pink-multi.jpg?v=1671092539',
                     whatsappLink: 'https://wa.me/YOUR_WHATSAPP_NUMBER?text=Hello! I am interested in the Ocean Breeze Tunic. Could you please provide more details?',
                 },
             ];
@@ -952,6 +962,7 @@
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
 
+                    // Removed product.description from here
                     productCard.innerHTML = `
                         <img
                             src="${product.imageUrl}"
@@ -960,7 +971,6 @@
                         />
                         <div class="product-card-content">
                             <h3>${product.name}</h3>
-                            <p>${product.description}</p>
                             <a
                                 href="${product.whatsappLink}"
                                 target="_blank"
