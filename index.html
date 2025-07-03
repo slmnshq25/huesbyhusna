@@ -236,7 +236,7 @@
             color: var(--text-green);
             cursor: pointer;
             padding: 0.5rem;
-            line-height: 1; /* Align 'X' vertically */
+            line-height: 1;
             position: absolute; /* Position relative to .mobile-menu-header */
             right: 1.5rem; /* Moved slightly left */
             top: 50%;
@@ -374,7 +374,7 @@
         .product-card {
             background-color: white;
             border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
             overflow: hidden;
             transition: transform 0.3s ease;
         }
@@ -386,10 +386,11 @@
         .product-card img {
             width: 100%;
             height: 16rem; /* h-64 */
-            object-fit: cover;
+            object-fit: cover; /* Desktop: zoomed effect */
             object-position: center;
-            border-top-left-radius: 0.75rem;
-            border-top-right-radius: 0.75rem;
+            border-top-left-radius: 0.75rem; /* Desktop: rounded top corners */
+            border-top-right-radius: 0.75rem; /* Desktop: rounded top corners */
+            /* Removed global border-radius: 1.5rem; */
         }
 
         .product-card-content {
@@ -634,12 +635,20 @@
                 padding: 0.4rem 1rem; /* Adjusted */
                 font-size: 0.85rem; /* Adjusted */
             }
+            .product-card {
+                padding: 0.75rem; /* Re-added padding to the card itself for the white border around the image */
+                border-radius: 1.5rem; /* Keep the overall card rounded */
+            }
             .product-card img {
-                height: 16rem; /* Increased height for better visibility with object-fit: contain */
-                object-fit: contain; /* Ensure full image is visible */
+                height: 16rem; /* Adjusted height for mobile */
+                object-fit: cover; /* Changed to cover to ensure image fills and allows rounding */
+                border-radius: 1rem; /* Apply rounding directly to the image */
+                margin-top: 0; /* Ensure no extra margin-top */
+                display: block; /* Ensure image behaves as a block */
             }
             .product-card-content {
-                padding: 0.75rem; /* Reduced padding for a more minimal look */
+                padding: 1rem; /* Existing padding for text */
+                padding-top: 0.75rem; /* Add top padding here for space between image and text */
             }
             .product-card h3 {
                 font-size: 1.1rem; /* Adjusted */
@@ -718,7 +727,10 @@
                 margin: 0 auto;
             }
             .product-card img {
-                height: 14rem; /* Slightly adjusted height for very small screens */
+                height: 14rem; /* Adjusted height for very small screens */
+                object-fit: cover; /* Changed to cover to ensure image fills and allows rounding */
+                border-radius: 1rem; /* Set to a specific rem value for rounded rectangle */
+                margin-top: 0; /* Ensure no extra margin-top */
             }
         }
 
