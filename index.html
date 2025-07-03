@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hues by Husna - Handcrafted Crochet & Fabric Dresses</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <!-- Font Awesome for social media icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Global box-sizing for consistent layout */
         *, *::before, *::after {
@@ -488,18 +490,13 @@
             display: flex;
             gap: 1rem; /* gap-4 */
             margin-top: 0.5rem; /* mt-2 */
-            justify-content: center; /* For center alignment on small screens */
+            justify-content: center; /* Centered on all screen sizes */
         }
 
-        @media (min-width: 640px) { /* sm breakpoint */
-            .social-icons {
-                justify-content: flex-start; /* Align left on larger screens */
-            }
-        }
-
+        /* Updated icon size for both mobile and desktop */
         .social-icons svg {
-            width: 2rem; /* w-8 */
-            height: 2rem; /* h-8 */
+            width: 2.5rem; /* Increased size */
+            height: 2.5rem; /* Increased size */
         }
 
         /* Footer Styling */
@@ -911,15 +908,13 @@
                         <li>
                             <span class="font-semibold">Follow Us:</span>
                             <div class="social-icons">
-                                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #3B82F6;">
-                                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.776-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33V22H12c5.523 0 10-4.477 10-10z" clip-rule="evenodd" />
-                                    </svg>
+                                <!-- Facebook Icon - Replace 'yourhuesbyhusnapage' with your actual Facebook page URL -->
+                                <a href="https://www.facebook.com/yourhuesbyhusnapage" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
+                                    <i class="fab fa-facebook-f"></i>
                                 </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer" style="color: #EC4899;">
-                                    <svg fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                                        <path fill-rule="evenodd" d="M12 0C8.74 0 8.333.014 7.053.072 5.775.132 4.914.336 4.05.75c-.852.413-1.566.966-2.208 1.608-.64.64-.993 1.354-1.407 2.207-.413.852-.617 1.713-.676 2.99-.059 1.28-.073 1.693-.073 5s.014 1.692.072 2.97c.06 1.277.264 2.138.677 2.99.413.852.966 1.566 1.608 2.208.64.64.993 1.354 1.407 2.207-.413.852-.617 1.713-.676 2.99-.059 1.28-.073 1.693-.073 5s.014 1.692.072 2.97c.06 1.277.264 2.138.677 2.99.413.852.966 1.566 1.608 2.208" clip-rule="evenodd" />
-                                    </svg>
+                                <!-- Instagram Icon - Replace 'yourhuesbyhusnapage' with your actual Instagram page URL -->
+                                <a href="https://www.instagram.com/yourhuesbyhusnapage" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </div>
                         </li>
@@ -1012,7 +1007,7 @@
 
             // Image Modal Elements
             const imageModalOverlay = document.getElementById('image-modal-overlay');
-            const imageModalContent = document = document.getElementById('image-modal-content');
+            const imageModalContent = document.getElementById('image-modal-content');
             const imageModalImage = document.getElementById('image-modal-image');
             const imageModalCloseButton = document.getElementById('image-modal-close');
 
@@ -1039,7 +1034,7 @@
             }
 
             // Set interval for carousel
-            setInterval(changeCarouselImage, 3500); // Change image every 5 seconds
+            setInterval(changeCarouselImage, 3500); // Change image every 3.5 seconds
 
             // Function to show a specific page and hide others
             function showPage(pageId) {
