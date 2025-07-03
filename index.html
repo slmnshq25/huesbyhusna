@@ -319,12 +319,16 @@
             min-height: unset; /* Ensure no conflicting min-height */
         }
 
-        #landing-page img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 0.75rem; /* rounded-xl */
+        /* General styles for landing page image - applies to desktop */
+        .landing-page-image {
+            max-width: 100%; /* Ensures image doesn't overflow its container */
+            height: auto; /* Maintains aspect ratio */
+            border-radius: 0.75rem; /* Slightly rounded corners */
             box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
             margin-bottom: 2rem; /* mb-8 */
+            display: block; /* Ensures it takes up its own line and margin works */
+            margin-left: auto; /* Center the image */
+            margin-right: auto; /* Center the image */
         }
 
         #landing-page h2 {
@@ -734,6 +738,25 @@
             }
         }
 
+        /* Mobile-specific styles for the landing page image */
+        @media (max-width: 768px) {
+            .landing-page-image {
+                width: calc(100% - 4rem); /* Increased gap for mobile container padding (2rem on each side) */
+                border-radius: 1rem; /* Consistent rounding */
+                height: 18rem; /* Slightly smaller height on mobile */
+                object-fit: cover; /* Ensure it covers the area and gets rounded */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .landing-page-image {
+                width: calc(100% - 3rem); /* Increased gap for smaller mobile container padding (1.5rem on each side) */
+                border-radius: 0.75rem; /* Slightly less rounding for very small screens */
+                height: 16rem; /* Even smaller height for very small screens */
+                object-fit: cover; /* Ensure it covers the area and gets rounded */
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -790,12 +813,19 @@
     <main>
         <!-- Landing Page Section -->
         <section id="landing-page" class="page-section">
+            <!-- Replaced the "Welcome to Hues by Husna" heading with crochet-related content -->
+            <div class="crochet-info">
+                <h2>The Art of Crochet</h2>
+                <p>
+                    Each piece at Hues by Husna is a testament to the timeless art of crochet, meticulously handcrafted to bring warmth and beauty to your little one's wardrobe.
+                </p>
+            </div>
             <img
-                src="https://placehold.co/800x500/F8F8F5/6B8E6B?text=Welcome+to+Hues+by+Husna"
+                src="https://www.thesprucecrafts.com/thmb/n75nK34HqUQsVF6djnRpTNDV23o=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/babyandtoddlerdress-5938833f3df78c537b2e2ffc.jpg"
                 alt="Hues by Husna Welcome"
                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/CCCCCC/333333?text=Welcome+Image';"
+                class="landing-page-image"
             />
-            <h2>Welcome to Hues by Husna</h2>
             <p>
                 Discover unique, handcrafted dresses for baby girls, featuring exquisite crochet tops and soft, comfortable fabrics.
                 Each piece is made with love, blending traditional artistry with modern comfort.
@@ -984,7 +1014,7 @@
 
             // Image Modal Elements
             const imageModalOverlay = document.getElementById('image-modal-overlay');
-            const imageModalContent = document.getElementById('image-modal-content');
+            const imageModalContent = document = document.getElementById('image-modal-content');
             const imageModalImage = document.getElementById('image-modal-image');
             const imageModalCloseButton = document.getElementById('image-modal-close');
 
@@ -1019,9 +1049,9 @@
                 mobileNavLinks.forEach(link => {
                     let targetPageId;
                     if (link.id === 'mobile-nav-home') {
-                        targetPageId = 'landing-page';
+                        pageId = 'landing-page';
                     } else {
-                        targetPageId = link.id.replace('mobile-nav-', '') + '-page';
+                        pageId = link.id.replace('mobile-nav-', '') + '-page';
                     }
 
                     if (targetPageId === pageId) {
@@ -1175,7 +1205,7 @@
                     if (this.id === 'mobile-nav-home') {
                         pageId = 'landing-page';
                     } else {
-                        pageId = this.id.replace('mobile-nav-', '') + '-page';
+                        pageId = link.id.replace('mobile-nav-', '') + '-page';
                     }
                     showPage(pageId);
                 });
