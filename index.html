@@ -561,18 +561,31 @@
             text-decoration: underline;
         }
 
-        .social-icons {
-            display: flex;
-            gap: 1rem; /* gap-4 */
-            margin-top: 0.5rem; /* mt-2 */
-            justify-content: center; /* Centered on all screen sizes */
+        /* Styling for the Instagram link to ensure icon and text are inline and styled */
+        .instagram-link {
+            display: inline-flex; /* Use inline-flex to keep it inline with "Follow Us:" */
+            align-items: center; /* Vertically align icon and text */
+            gap: 0.5rem; /* Space between icon and text */
+            text-decoration: none; /* Remove underline */
+            color: var(--dark-text); /* Default text color */
+            font-weight: 600; /* Keep font weight consistent with other list items */
+            transition: color 0.2s ease;
         }
 
-        /* Updated icon size for both mobile and desktop */
-        .social-icons svg {
-            width: 2.5rem; /* Increased size */
-            height: 2.5rem; /* Increased size */
+        .instagram-link:hover {
+            color: var(--primary-peach); /* Hover color */
         }
+
+        .instagram-link .fab { /* Target Font Awesome icon within the link */
+            font-size: 1.25rem; /* Adjust size as needed for the icon */
+            color: #E1306C; /* A common Instagram-like pink/red color */
+            transition: color 0.3s ease;
+        }
+
+        .instagram-link .fab:hover {
+            color: #C13584; /* A slightly darker shade on hover */
+        }
+
 
         /* Footer Styling */
         footer {
@@ -755,9 +768,8 @@
             .contact-info a {
                 font-size: 0.75rem; /* Adjusted */
             }
-            .social-icons svg {
-                width: 1.25rem; /* Adjusted */
-                height: 1.25rem; /* Adjusted */
+            .instagram-link .fab { /* Target Font Awesome icons on mobile */
+                font-size: 1.25rem; /* Adjusted */
             }
             footer p {
                 font-size: 0.75rem; /* Adjusted for mobile */
@@ -981,25 +993,16 @@
                         </li>
                         <li>
                             <span class="font-semibold">Email:</span>
-                            <a href="mailto:ihuesbyhusna@gmail.com">
+                            <a href="mailto:huesbyhusna@gmail.com">
                                 huesbyhusna@gmail.com
                             </a>
                         </li>
                         <li>
                             <span class="font-semibold">Follow Us:</span>
-                            <a href="https://www.instagram.com/hues.by.husna?igsh=MTU1dmI3MzFkenkxbA=="target="_blank" rel="noopener noreferrer">
-                                Instagram
+                            <!-- Instagram Icon -->
+                            <a href="https://www.instagram.com/hues.by.husna?igsh=MTU1dmI3MzFkenkxbA==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="instagram-link">
+                                <i class="fab fa-instagram"></i>
                             </a>
-                            <!-- <div class="social-icons"> -->
-                                <!-- Facebook Icon - Replace 'yourhuesbyhusnapage' with your actual Facebook page URL -->
-                                <!-- <a href="https://www.facebook.com/yourhuesbyhusnapage" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Facebook">
-                                    <i class="fab fa-facebook-f"></i>
-                                </a> -->
-                                <!-- Instagram Icon - Replace 'yourhuesbyhusnapage' with your actual Instagram page URL -->
-                                <!-- <a href="https://www.instagram.com/hues.by.husna?igsh=MTU1dmI3MzFkenkxbA==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram">
-                                    <i class="fab fa-instagram"></i>
-                                </a> -->
-                            <!-- </div> -->
                         </li>
                     </ul>
                 </div>
