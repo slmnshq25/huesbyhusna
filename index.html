@@ -1327,98 +1327,125 @@
 
 
             // Function to render product cards
-            function renderProducts() {
-                const soldOutProductIds = [2, 3, 6, 8, 9, 10]; // IDs of sold out products
-                productGrid.innerHTML = ''; // Clear existing products
+            // Function to render product cards
+function renderProducts() {
+    const soldOutProductIds = [2, 3, 6, 8, 9, 10]; // IDs of sold out products
+    productGrid.innerHTML = ''; // Clear existing products
 
-                // Add the rest of the products
-                products.forEach(product => {
-                    const productCard = document.createElement('div');
-                    productCard.classList.add('product-card');
-                    const isSoldOut = soldOutProductIds.includes(product.id);
+    // 1. Render the Standard Products
+    products.forEach(product => {
+        const productCard = document.createElement('div');
+        productCard.classList.add('product-card');
+        const isSoldOut = soldOutProductIds.includes(product.id);
 
-                    let buttonHtml;
-                    if (isSoldOut) {
-                        // If sold out, show a disabled-looking button as a span
-                        buttonHtml = `
-                            <span class="whatsapp-btn sold-out-btn">Sold Out</span>
-                        `;
-                    } else {
-                        // Otherwise, show the normal "Order Now" link
-                        buttonHtml = `
-                            <a
-                                href="${product.whatsappLink}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="whatsapp-btn"
-                            >
-                                Order Now
-                            </a>
-                        `;
-                    }
+        let buttonHtml;
+        if (isSoldOut) {
+            buttonHtml = `<span class="whatsapp-btn sold-out-btn">Sold Out</span>`;
+        } else {
+            buttonHtml = `
+                <a
+                    href="${product.whatsappLink}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="whatsapp-btn"
+                >
+                    Order Now
+                </a>
+            `;
+        }
 
-                    productCard.innerHTML = `
-                        <img
-                            src="${product.imageUrl}"
-                            alt="${product.name}"
-                            onerror="this.onerror=null; this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Not+Found';"
-                        />
-                        <div class="product-card-content">
-                            <h3>${product.name}</h3>
-                            <p class="product-size">Size: ${product.size}</p>
-                            ${buttonHtml}
-                        </div>
-                    `;
-                    const productImage = productCard.querySelector('img');
-                    productImage.addEventListener('click', function() {
-                        openImageModal(this.src);
-                    });
+        productCard.innerHTML = `
+            <img
+                src="${product.imageUrl}"
+                alt="${product.name}"
+                onerror="this.onerror=null; this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Not+Found';"
+            />
+            <div class="product-card-content">
+                <h3>${product.name}</h3>
+                <p class="product-size">Size: ${product.size}</p>
+                ${buttonHtml}
+            </div>
+        `;
+        const productImage = productCard.querySelector('img');
+        productImage.addEventListener('click', function() {
+            openImageModal(this.src);
+        });
 
-                    productGrid.appendChild(productCard);
-                });
+        productGrid.appendChild(productCard);
+    });
 
-                // Add the custom order card at the end
-                const customOrderCard = document.createElement('div');
-                customOrderCard.classList.add('product-card');
-                customOrderCard.innerHTML = `
-                    <img
-                        src="https://i.ibb.co/mVF0ZWp0/customise.png"
-                        alt="Customise Your Dress"
-                        class="customise-image"
-                        onerror="this.onerror=null; this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Not+Found';"
-                    />
-                    <div class="product-card-content">
-                        <h3>Design Your Dream Dress</h3>
-                        <p>Have a unique design in mind? Let's create a one-of-a-kind dress for your little one together.</p>
-                        <a
-                            href="https://wa.me/919496837330?text=Hello! I would like to customise a dress. Could you please provide more details on the options available?"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            class="whatsapp-btn"
-                        >
-                            Customise Now
-                        </a>
-                    </div>
-                `;
-                productGrid.appendChild(customOrderCard);
+    // 2. Add the FIRST Custom Order Card
+    const customOrderCard = document.createElement('div');
+    customOrderCard.classList.add('product-card');
+    customOrderCard.innerHTML = `
+        <img
+            src="https://i.ibb.co/mVF0ZWp0/customise.png"
+            alt="Customise Your Dress"
+            class="customise-image"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x400/CCCCCC/333333?text=Image+Not+Found';"
+        />
+        <div class="product-card-content">
+            <h3>Design Your Dream Dress</h3>
+            <p>Have a unique design in mind? Let's create a one-of-a-kind dress for your little one together.</p>
+            <a
+                href="https://wa.me/919496837330?text=Hello! I would like to customise a dress for my baby."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-btn"
+            >
+                Customise Now
+            </a>
+        </div>
+    `;
+    productGrid.appendChild(customOrderCard);
 
-                const customImage = customOrderCard.querySelector('.customise-image');
-                customImage.addEventListener('click', function() {
-                    openImageModal(this.src);
-                });
-            }
+    const customImage = customOrderCard.querySelector('.customise-image');
+    customImage.addEventListener('click', function() {
+        openImageModal(this.src);
+    });
 
+    // 3. Add the SECOND Custom Order Card (NEW)
+    const customOrderCard2 = document.createElement('div');
+    customOrderCard2.classList.add('product-card');
+    customOrderCard2.innerHTML = `
+        <img
+            src="https://i.ibb.co/pBDLBW8S/IMG-3178.jpg" 
+            alt="Customise Option 2"
+            class="customise-image"
+            onerror="this.onerror=null; this.src='https://placehold.co/400x400/F0D4BB/333333?text=New+Design+Coming+Soon';"
+        />
+        <div class="product-card-content">
+            <h3>Have Another Idea?</h3>
+            <p>Send us your reference images or sketches, and we will bring them to life with our signature touch.</p>
+            <a
+                href="https://wa.me/919496837330?text=Hello! I would like to customize an adult dress."
+                target="_blank"
+                rel="noopener noreferrer"
+                class="whatsapp-btn"
+            >
+                Chat to Customize
+            </a>
+        </div>
+    `;
+    productGrid.appendChild(customOrderCard2);
 
-            // Event Listeners for Desktop Navigation
-            navLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    let pageId;
-                    if (this.id === 'nav-home') {
-                        pageId = 'landing-page';
-                    } else {
-                        pageId = this.id.replace('nav-', '') + '-page';
-                    }
+    // Add event listener for the second custom image modal
+    const customImage2 = customOrderCard2.querySelector('.customise-image');
+    customImage2.addEventListener('click', function() {
+        openImageModal(this.src);
+    });
+}
+
+// Event Listeners for Desktop Navigation
+navLinks.forEach(link => {
+    link.addEventListener('click', function(event) {
+        event.preventDefault();
+        let pageId;
+        if (this.id === 'nav-home') {
+            pageId = 'landing-page';
+        } else {
+            pageId = this.id.replace('nav-', '') + '-page';
+        }
                     showPage(pageId);
                 });
             });
@@ -1494,4 +1521,3 @@
     </script>
 </body>
 </html>
-
