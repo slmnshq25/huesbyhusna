@@ -1,45 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hues by Husna - Handcrafted Crochet & Fabric Dresses</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
     <!-- Font Awesome for social media icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         /* Global box-sizing for consistent layout */
-        *, *::before, *::after {
+        *,
+        *::before,
+        *::after {
             box-sizing: border-box;
         }
 
         /* Define pastel color palette based on the logo */
         :root {
-            --primary-green: #C3D9C3; /* Light green/sage from 'H' and circle */
-            --primary-peach: #F0D4BB; /* Light orange/peach from 'H' */
-            --text-purple: #E0D0E8;   /* Light purple from 'u' */
-            --text-pink: #F1E0E0;     /* Light pink from 'e' */
-            --text-green: #6B8E6B;    /* Darker green from 's' */
-            --background-light: #F8F8F5; /* Light grey/beige from background */
-            --button-hover: #B2C9B2; /* Slightly darker green for hover */
-            --dark-text: #4A5568; /* A darker grey for general text */
-            --overlay-dark: rgba(0, 0, 0, 0.5); /* For mobile menu overlay */
-            --modal-bg: rgba(0, 0, 0, 0.8); /* Darker overlay for image modal */
+            --primary-green: #C3D9C3;
+            /* Light green/sage from 'H' and circle */
+            --primary-peach: #F0D4BB;
+            /* Light orange/peach from 'H' */
+            --text-purple: #E0D0E8;
+            /* Light purple from 'u' */
+            --text-pink: #F1E0E0;
+            /* Light pink from 'e' */
+            --text-green: #6B8E6B;
+            /* Darker green from 's' */
+            --background-light: #F8F8F5;
+            /* Light grey/beige from background */
+            --button-hover: #B2C9B2;
+            /* Slightly darker green for hover */
+            --dark-text: #4A5568;
+            /* A darker grey for general text */
+            --overlay-dark: rgba(0, 0, 0, 0.5);
+            /* For mobile menu overlay */
+            --modal-bg: rgba(0, 0, 0, 0.8);
+            /* Darker overlay for image modal */
         }
 
         /* Base body and html styles for full height and no horizontal scroll */
-        html, body {
-            height: 100%; /* Ensure html and body take full viewport height */
+        html,
+        body {
+            height: 100%;
+            /* Ensure html and body take full viewport height */
             margin: 0;
             padding: 0;
-            overflow-x: hidden; /* Prevent horizontal scrollbar */
-            overflow-y: auto; /* Allow body to scroll if content overflows */
+            overflow-x: hidden;
+            /* Prevent horizontal scrollbar */
+            overflow-y: auto;
+            /* Allow body to scroll if content overflows */
         }
 
         body {
             display: flex;
-            flex-direction: column; /* Arrange header, main, footer vertically */
-            min-height: 100vh; /* Ensure body takes at least full viewport height */
+            flex-direction: column;
+            /* Arrange header, main, footer vertically */
+            min-height: 100vh;
+            /* Ensure body takes at least full viewport height */
             font-family: 'Inter', sans-serif;
             background-color: var(--background-light);
             color: var(--dark-text);
@@ -53,14 +73,17 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--primary-green); /* Matching logo color */
+            background-color: var(--primary-green);
+            /* Matching logo color */
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 9999; /* Ensure it's on top of everything */
+            z-index: 9999;
+            /* Ensure it's on top of everything */
             opacity: 1;
             visibility: visible;
-            transform: translateY(0); /* Initial position for slide-up */
+            transform: translateY(0);
+            /* Initial position for slide-up */
             /* Transition for slide-up and fade */
             transition: transform 1s ease-out, opacity 1s ease-out, visibility 1s ease-out;
         }
@@ -68,55 +91,73 @@
         #splash-screen.hidden {
             opacity: 0;
             visibility: hidden;
-            pointer-events: none; /* Allows clicks to pass through after fading */
-            transform: translateY(-100%); /* Slides up completely */
+            pointer-events: none;
+            /* Allows clicks to pass through after fading */
+            transform: translateY(-100%);
+            /* Slides up completely */
         }
 
         .splash-logo {
-            width: 20vw; /* Responsive width based on viewport width */
-            height: 20vw; /* Keep aspect ratio */
-            max-width: 200px; /* Max size for desktop */
-            max-height: 200px; /* Max size for desktop */
+            width: 20vw;
+            /* Responsive width based on viewport width */
+            height: 20vw;
+            /* Keep aspect ratio */
+            max-width: 200px;
+            /* Max size for desktop */
+            max-height: 200px;
+            /* Max size for desktop */
             object-fit: contain;
-            border-radius: 50%; /* If your logo is circular */
-            border: 5px solid var(--primary-peach); /* Add a border to match your logo style */
+            border-radius: 50%;
+            /* If your logo is circular */
+            border: 5px solid var(--primary-peach);
+            /* Add a border to match your logo style */
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
             /* Initial state for logo animation */
             opacity: 0;
-            transform: scale(0.8); /* Start slightly smaller */
+            transform: scale(0.8);
+            /* Start slightly smaller */
             /* Animation for logo itself (fade-in and zoom-in) */
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
 
         .splash-logo.active {
             opacity: 1;
-            transform: scale(1); /* Zoom to normal size */
+            transform: scale(1);
+            /* Zoom to normal size */
         }
 
         /* Responsive adjustments for the splash logo */
         @media (max-width: 768px) {
             .splash-logo {
-                width: 30vw; /* Larger relative size for tablets */
+                width: 30vw;
+                /* Larger relative size for tablets */
                 height: 30vw;
-                max-width: 150px; /* Cap for tablets */
+                max-width: 150px;
+                /* Cap for tablets */
                 max-height: 150px;
                 /* No initial transform here, it's handled by .splash-logo.active */
             }
+
             .splash-logo.active {
-                transform: scale(1); /* Ensure it scales to 1 on mobile too */
+                transform: scale(1);
+                /* Ensure it scales to 1 on mobile too */
             }
         }
 
         @media (max-width: 480px) {
             .splash-logo {
-                width: 40vw; /* Even larger relative size for phones */
+                width: 40vw;
+                /* Even larger relative size for phones */
                 height: 40vw;
-                max-width: 120px; /* Cap for small phones */
+                max-width: 120px;
+                /* Cap for small phones */
                 max-height: 120px;
                 /* No initial transform here, it's handled by .splash-logo.active */
             }
+
             .splash-logo.active {
-                transform: scale(1); /* Ensure it scales to 1 on mobile too */
+                transform: scale(1);
+                /* Ensure it scales to 1 on mobile too */
             }
         }
 
@@ -124,44 +165,100 @@
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 1rem; /* Default padding for desktop */
-            width: 100%; /* Ensure container takes full width of its parent */
+            padding: 0 1rem;
+            /* Default padding for desktop */
+            width: 100%;
+            /* Ensure container takes full width of its parent */
         }
 
         /* Main Header Section (combines logo and nav) */
         .main-header {
             background-color: var(--primary-green);
-            padding: 0.5rem 0; /* Compact padding for the entire header */
+            padding: 0.5rem 0;
+            /* Compact padding for the entire header */
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
             flex-shrink: 0;
-            position: relative; /* Needed for absolute positioning of hamburger icon */
-            z-index: 100; /* Ensure header is above other content */
+            position: relative;
+            /* Needed for absolute positioning of hamburger icon */
+            z-index: 100;
+            /* Ensure header is above other content */
         }
+
+        /* Promo Running Banner Styles */
+        .promo-banner {
+            background-color: var(--primary-peach);
+            color: var(--dark-text);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 0.6rem 0;
+            font-weight: 700;
+            font-size: 0.95rem;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            z-index: 95;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            flex-shrink: 0;
+            /* Prevent the flex body from shrinking the banner */
+            line-height: 1.2;
+        }
+
+
+        .promo-banner-track {
+            display: inline-flex;
+            animation: marquee 25s linear infinite;
+            width: max-content;
+        }
+
+        .promo-banner-track span {
+            padding-right: 4rem;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translate3d(0, 0, 0);
+            }
+
+            100% {
+                transform: translate3d(-50%, 0, 0);
+            }
+        }
+
 
         .header-content {
             display: flex;
-            align-items: center; /* Vertically align items in the middle */
-            justify-content: center; /* Changed to center to group items */
-            flex-wrap: wrap; /* Allow wrapping on smaller screens */
+            align-items: center;
+            /* Vertically align items in the middle */
+            justify-content: center;
+            /* Changed to center to group items */
+            flex-wrap: wrap;
+            /* Allow wrapping on smaller screens */
         }
 
         /* Logo Styling within the new header */
         .header-content .logo-link {
-            flex-shrink: 0; /* Prevent logo from shrinking */
+            flex-shrink: 0;
+            /* Prevent logo from shrinking */
             display: block;
-            margin: 0 2rem; /* Added horizontal margin to separate from nav links */
+            margin: 0 2rem;
+            /* Added horizontal margin to separate from nav links */
         }
 
         .header-content .logo-link img {
-            max-width: 100px; /* Adjust logo size as needed, made slightly smaller */
+            max-width: 100px;
+            /* Adjust logo size as needed, made slightly smaller */
             height: auto;
             display: block;
-            margin: 0 auto; /* Centered for smaller screens, or if flex-grow is used */
-            border-radius: 50%; /* Optional: if you want a circular logo */
+            margin: 0 auto;
+            /* Centered for smaller screens, or if flex-grow is used */
+            border-radius: 50%;
+            /* Optional: if you want a circular logo */
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-            border: 3px solid var(--primary-peach); /* Added border to logo */
-            transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth hover effect */
-            cursor: pointer; /* Indicate it's clickable */
+            border: 3px solid var(--primary-peach);
+            /* Added border to logo */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            /* Smooth hover effect */
+            cursor: pointer;
+            /* Indicate it's clickable */
         }
 
         .header-content .logo-link img:hover {
@@ -177,28 +274,34 @@
             display: flex;
             align-items: center;
             flex-wrap: wrap;
-            gap: 4rem; /* Increased space between nav items within each ul */
+            gap: 4rem;
+            /* Increased space between nav items within each ul */
         }
 
         .header-content ul li a {
             color: var(--text-green);
             text-decoration: none;
             font-weight: 600;
-            font-size: 1.2rem; /* Increased font size */
-            padding: 0.5rem 0.8rem; /* Increased padding */
-            border-radius: 0.375rem; /* rounded-md */
+            font-size: 1.2rem;
+            /* Increased font size */
+            padding: 0.5rem 0.8rem;
+            /* Increased padding */
+            border-radius: 0.375rem;
+            /* rounded-md */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         .header-content ul li a:hover,
         .header-content ul li a.active {
             background-color: var(--primary-peach);
-            color: white; /* Or a contrasting color */
+            color: white;
+            /* Or a contrasting color */
         }
 
         /* Hamburger Menu Button */
         .hamburger-button {
-            display: none; /* Hidden by default on desktop */
+            display: none;
+            /* Hidden by default on desktop */
             flex-direction: column;
             justify-content: space-around;
             width: 30px;
@@ -207,11 +310,13 @@
             border: none;
             cursor: pointer;
             padding: 0;
-            position: absolute; /* Position relative to .main-header */
+            position: absolute;
+            /* Position relative to .main-header */
             right: 1rem;
             top: 50%;
             transform: translateY(-50%);
-            z-index: 101; /* Ensure it's above other header content */
+            z-index: 101;
+            /* Ensure it's above other header content */
         }
 
         .hamburger-line {
@@ -238,17 +343,21 @@
 
         /* Mobile Menu Overlay */
         .mobile-menu-overlay {
-            display: none; /* Hidden by default */
+            display: none;
+            /* Hidden by default */
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-color: var(--overlay-dark); /* Semi-transparent overlay */
-            z-index: 99; /* Below the menu, above content */
+            background-color: var(--overlay-dark);
+            /* Semi-transparent overlay */
+            z-index: 99;
+            /* Below the menu, above content */
             transition: opacity 0.3s ease;
             opacity: 0;
         }
+
         .mobile-menu-overlay.active {
             display: block;
             opacity: 1;
@@ -256,26 +365,37 @@
 
         /* Mobile Navigation Menu */
         #mobile-menu {
-            display: flex; /* Always flex to allow for max-height transition */
+            display: flex;
+            /* Always flex to allow for max-height transition */
             position: fixed;
             top: 0;
-            left: 0; /* Align to left to slide down from top */
-            width: 100%; /* Full width for slide down */
-            max-height: 0; /* Start hidden with no height */
-            opacity: 0; /* Start invisible */
+            left: 0;
+            /* Align to left to slide down from top */
+            width: 100%;
+            /* Full width for slide down */
+            max-height: 0;
+            /* Start hidden with no height */
+            opacity: 0;
+            /* Start invisible */
             background-color: var(--primary-green);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-            transition: max-height 0.5s ease-out, opacity 0.5s ease-out; /* Smooth transition */
-            z-index: 100; /* Above overlay */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            /* Shadow for depth */
+            transition: max-height 0.5s ease-out, opacity 0.5s ease-out;
+            /* Smooth transition */
+            z-index: 100;
+            /* Above overlay */
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
-            overflow: hidden; /* Hide content that exceeds max-height */
+            overflow: hidden;
+            /* Hide content that exceeds max-height */
         }
 
         #mobile-menu.active {
-            max-height: 500px; /* Sufficient height to show all content */
-            opacity: 1; /* Fully visible */
+            max-height: 500px;
+            /* Sufficient height to show all content */
+            opacity: 1;
+            /* Fully visible */
             /* Removed padding-top here, will add it to mobile-menu-header */
         }
 
@@ -285,41 +405,56 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 0.5rem 1rem; /* Padding for the header itself */
-            background-color: var(--primary-green); /* Match menu background */
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Subtle shadow */
-            position: relative; /* For positioning close button */
-            z-index: 10; /* Ensure it's above menu items if they scroll */
+            padding: 0.5rem 1rem;
+            /* Padding for the header itself */
+            background-color: var(--primary-green);
+            /* Match menu background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            /* Subtle shadow */
+            position: relative;
+            /* For positioning close button */
+            z-index: 10;
+            /* Ensure it's above menu items if they scroll */
         }
 
         .mobile-menu-header .logo-link {
-            margin: 0; /* Override desktop margin */
-            flex-grow: 1; /* Allow logo to take available space */
-            text-align: center; /* Center logo within its flex item */
+            margin: 0;
+            /* Override desktop margin */
+            flex-grow: 1;
+            /* Allow logo to take available space */
+            text-align: center;
+            /* Center logo within its flex item */
         }
 
         .mobile-menu-header .logo-link img {
-            max-width: 70px; /* Smaller logo in mobile menu */
+            max-width: 70px;
+            /* Smaller logo in mobile menu */
             height: auto;
             border-radius: 50%;
             border: 2px solid var(--primary-peach);
-            box-shadow: none; /* Remove extra shadow */
+            box-shadow: none;
+            /* Remove extra shadow */
         }
 
         .mobile-menu-close-button {
             background: none;
             border: none;
-            font-size: 2.5rem; /* Increased font size for larger 'X' */
+            font-size: 2.5rem;
+            /* Increased font size for larger 'X' */
             color: var(--text-green);
             cursor: pointer;
             padding: 0.5rem;
             line-height: 1;
-            position: absolute; /* Position relative to .mobile-menu-header */
-            right: 1.5rem; /* Moved slightly left */
+            position: absolute;
+            /* Position relative to .mobile-menu-header */
+            right: 1.5rem;
+            /* Moved slightly left */
             top: 50%;
             transform: translateY(-50%);
-            z-index: 11; /* Ensure it's above the logo */
+            z-index: 11;
+            /* Ensure it's above the logo */
         }
+
         .mobile-menu-close-button:hover {
             color: var(--primary-peach);
         }
@@ -328,10 +463,14 @@
         #mobile-menu ul {
             flex-direction: column;
             width: 100%;
-            gap: 0.75rem; /* Reduced space between mobile nav items */
-            list-style: none; /* Remove bullets */
-            padding: 0; /* Ensure no default padding from list-style */
-            margin-top: 1rem; /* Space below the header */
+            gap: 0.75rem;
+            /* Reduced space between mobile nav items */
+            list-style: none;
+            /* Remove bullets */
+            padding: 0;
+            /* Ensure no default padding from list-style */
+            margin-top: 1rem;
+            /* Space below the header */
         }
 
         #mobile-menu ul li {
@@ -341,11 +480,15 @@
 
         #mobile-menu ul li a {
             display: block;
-            padding: 0.75rem; /* Reduced padding for smaller items */
-            font-size: 1.1rem; /* Reduced font size for mobile links */
+            padding: 0.75rem;
+            /* Reduced padding for smaller items */
+            font-size: 1.1rem;
+            /* Reduced font size for mobile links */
             color: var(--text-green);
-            text-decoration: none; /* Remove underline */
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2); /* Separator */
+            text-decoration: none;
+            /* Remove underline */
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            /* Separator */
             transition: background-color 0.3s ease, color 0.3s ease;
         }
 
@@ -361,74 +504,107 @@
 
         /* Main Content Area */
         main {
-            flex-grow: 1; /* Allow main to take up available vertical space */
-            display: flex; /* Make main a flex container for its sections */
+            flex-grow: 1;
+            /* Allow main to take up available vertical space */
+            display: flex;
+            /* Make main a flex container for its sections */
             flex-direction: column;
         }
 
         /* Section Styling */
         .page-section {
-            padding: 3rem 0; /* py-12 */
+            padding: 3rem 0;
+            /* py-12 */
             text-align: center;
-            flex-grow: 1; /* Allow active section to fill main */
-            display: flex; /* For centering content within the section */
+            flex-grow: 1;
+            /* Allow active section to fill main */
+            display: flex;
+            /* For centering content within the section */
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Vertically center content */
-            width: 100%; /* Ensure section takes full width */
-            box-sizing: border-box; /* Include padding in width calculation */
+            justify-content: center;
+            /* Vertically center content */
+            width: 100%;
+            /* Ensure section takes full width */
+            box-sizing: border-box;
+            /* Include padding in width calculation */
         }
 
         .page-section h2 {
-            font-size: 2.25rem; /* text-4xl */
-            font-weight: 600; /* font-semibold */
-            margin-bottom: 1rem; /* mb-4 */
+            font-size: 2.25rem;
+            /* text-4xl */
+            font-weight: 600;
+            /* font-semibold */
+            margin-bottom: 1rem;
+            /* mb-4 */
             color: var(--text-green);
         }
 
         .page-section p {
-            font-size: 1.125rem; /* text-lg */
+            font-size: 1.125rem;
+            /* text-lg */
             color: var(--dark-text);
         }
 
         /* Landing Page Specific */
         #landing-page {
-            min-height: unset; /* Ensure no conflicting min-height */
+            min-height: unset;
+            /* Ensure no conflicting min-height */
         }
 
         /* General styles for landing page image - applies to desktop */
         .landing-page-image {
-            max-width: 800px; /* Original width for desktop */
-            height: 500px; /* Original height for desktop */
-            object-fit: cover; /* Ensures image covers the area */
-            border-radius: 0.75rem; /* Slightly rounded corners */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            margin-bottom: 2rem; /* mb-8 */
-            display: block; /* Ensures it takes up its own line and margin works */
-            margin-left: auto; /* Center the image */
-            margin-right: auto; /* Center the image */
-            transition: opacity 1s ease-in-out; /* For fade animation */
+            max-width: 800px;
+            /* Original width for desktop */
+            height: 500px;
+            /* Original height for desktop */
+            object-fit: cover;
+            /* Ensures image covers the area */
+            border-radius: 0.75rem;
+            /* Slightly rounded corners */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-lg */
+            margin-bottom: 2rem;
+            /* mb-8 */
+            display: block;
+            /* Ensures it takes up its own line and margin works */
+            margin-left: auto;
+            /* Center the image */
+            margin-right: auto;
+            /* Center the image */
+            transition: opacity 1s ease-in-out;
+            /* For fade animation */
         }
 
         #landing-page h2 {
-            font-size: 3rem; /* text-5xl */
-            font-weight: 800; /* font-extrabold */
-            margin-bottom: 1rem; /* mb-4 */
+            font-size: 3rem;
+            /* text-5xl */
+            font-weight: 800;
+            /* font-extrabold */
+            margin-bottom: 1rem;
+            /* mb-4 */
             color: var(--text-green);
         }
 
         #landing-page p {
-            font-size: 1.25rem; /* text-xl */
-            max-width: 42rem; /* max-w-2xl */
+            font-size: 1.25rem;
+            /* text-xl */
+            max-width: 42rem;
+            /* max-w-2xl */
         }
 
         /* General Button Styling */
         .btn-primary {
-            margin-top: 2rem; /* mt-8 */
-            padding: 0.75rem 2rem; /* py-3 px-8 */
-            font-size: 1.125rem; /* text-lg */
-            font-weight: 600; /* font-semibold */
-            border-radius: 0.5rem; /* rounded-lg */
+            margin-top: 2rem;
+            /* mt-8 */
+            padding: 0.75rem 2rem;
+            /* py-3 px-8 */
+            font-size: 1.125rem;
+            /* text-lg */
+            font-weight: 600;
+            /* font-semibold */
+            border-radius: 0.5rem;
+            /* rounded-lg */
             color: white;
             background-color: var(--primary-peach);
             border: none;
@@ -439,40 +615,54 @@
 
         .btn-primary:hover {
             background-color: var(--button-hover);
-            transform: translateY(-0.25rem); /* hover:-translate-y-1 */
-            box-shadow: 0 10px 15px -3px var(--primary-peach), 0 4px 6px -2px var(--primary-peach); /* hover:shadow-xl */
+            transform: translateY(-0.25rem);
+            /* hover:-translate-y-1 */
+            box-shadow: 0 10px 15px -3px var(--primary-peach), 0 4px 6px -2px var(--primary-peach);
+            /* hover:shadow-xl */
         }
 
         /* Product Grid Styling */
         .product-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
-            gap: 2rem; /* gap-8 */
-            width: 100%; /* Ensure grid takes full width of container */
-            max-width: 1200px; /* Match container max-width */
-            margin: 0 auto; /* Center the grid */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            /* Responsive grid */
+            gap: 2rem;
+            /* gap-8 */
+            width: 100%;
+            /* Ensure grid takes full width of container */
+            max-width: 1200px;
+            /* Match container max-width */
+            margin: 0 auto;
+            /* Center the grid */
             /* Removed padding from here, relies on .container */
         }
 
         .product-card {
             background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-lg */
             overflow: hidden;
             transition: transform 0.3s ease;
         }
 
         .product-card:hover {
-            transform: scale(1.05); /* hover:scale-105 */
+            transform: scale(1.05);
+            /* hover:scale-105 */
         }
 
         .product-card img {
             width: 100%;
-            height: 16rem; /* h-64 */
-            object-fit: cover; /* Desktop: zoomed effect */
+            height: 16rem;
+            /* h-64 */
+            object-fit: cover;
+            /* Desktop: zoomed effect */
             object-position: center;
-            border-top-left-radius: 0.75rem; /* Desktop: rounded top corners */
-            border-top-right-radius: 0.75rem; /* Desktop: rounded top corners */
+            border-top-left-radius: 0.75rem;
+            /* Desktop: rounded top corners */
+            border-top-right-radius: 0.75rem;
+            /* Desktop: rounded top corners */
             /* Removed global border-radius: 1.5rem; */
         }
 
@@ -481,19 +671,25 @@
         }
 
         .product-card-content {
-            padding: 1.5rem; /* p-6 */
+            padding: 1.5rem;
+            /* p-6 */
         }
 
         .product-card h3 {
-            font-size: 1.5rem; /* text-2xl */
-            font-weight: 600; /* font-semibold */
-            margin-bottom: 0.5rem; /* mb-2 */
+            font-size: 1.5rem;
+            /* text-2xl */
+            font-weight: 600;
+            /* font-semibold */
+            margin-bottom: 0.5rem;
+            /* mb-2 */
             color: var(--text-green);
         }
 
         .product-card p {
-            font-size: 1rem; /* text-gray-700 */
-            margin-bottom: 1rem; /* mb-4 */
+            font-size: 1rem;
+            /* text-gray-700 */
+            margin-bottom: 1rem;
+            /* mb-4 */
             color: var(--dark-text);
         }
 
@@ -505,14 +701,55 @@
             margin-bottom: 1rem;
         }
 
+        .product-card .product-price {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: -0.5rem;
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .product-card .original-price {
+            text-decoration: line-through;
+            color: #a0aec0;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .product-card .sale-price {
+            color: #e53e3e;
+            /* Promo sale red */
+            font-weight: 700;
+        }
+
+        .product-card .discount-badge {
+            background-color: var(--primary-green);
+            /* Soft brand sage green background */
+            color: var(--text-green);
+            /* Brand dark green text */
+            padding: 0.15rem 0.45rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+        }
+
+
+
+
         .product-card .whatsapp-btn {
             display: block;
             width: 100%;
             text-align: center;
-            padding: 0.75rem 1.5rem; /* py-3 px-6 */
-            border-radius: 0.5rem; /* rounded-lg */
+            padding: 0.75rem 1.5rem;
+            /* py-3 px-6 */
+            border-radius: 0.5rem;
+            /* rounded-lg */
             color: white;
-            font-weight: 600; /* font-semibold */
+            font-weight: 600;
+            /* font-semibold */
             background-color: var(--primary-peach);
             text-decoration: none;
             transition: all 0.3s ease;
@@ -521,45 +758,58 @@
 
         .product-card .whatsapp-btn:hover {
             background-color: var(--button-hover);
-            transform: translateY(-0.25rem); /* hover:-translate-y-1 */
-            box-shadow: 0 10px 15px -3px var(--primary-peach), 0 4px 6px -2px var(--primary-peach); /* hover:shadow-xl */
+            transform: translateY(-0.25rem);
+            /* hover:-translate-y-1 */
+            box-shadow: 0 10px 15px -3px var(--primary-peach), 0 4px 6px -2px var(--primary-peach);
+            /* hover:shadow-xl */
         }
 
         /* Styles for Sold Out button */
         .product-card .sold-out-btn {
-            background-color: #D9E4D9; /* A lighter, muted green */
+            background-color: #D9E4D9;
+            /* A lighter, muted green */
             color: var(--text-green);
             cursor: not-allowed;
             /* Override the box-shadow from .whatsapp-btn */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
         }
-        
+
         .product-card .sold-out-btn:hover {
-            background-color: #D9E4D9; /* Keep color same on hover */
-            transform: none; /* No hover effect */
+            background-color: #D9E4D9;
+            /* Keep color same on hover */
+            transform: none;
+            /* No hover effect */
             /* Keep the same neutral shadow on hover */
-            box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -2px rgba(0,0,0,0.05);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
         }
 
 
         /* About Us & Contact Us Specific */
         .content-card {
             background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); /* shadow-lg */
-            padding: 2rem; /* p-8 */
-            margin-bottom: 2rem; /* mb-8 */
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            /* shadow-lg */
+            padding: 2rem;
+            /* p-8 */
+            margin-bottom: 2rem;
+            /* mb-8 */
             color: var(--dark-text);
-            max-width: 50rem; /* max-w-2xl */
+            max-width: 50rem;
+            /* max-w-2xl */
             margin-left: auto;
             margin-right: auto;
             text-align: left;
         }
 
         .content-card h3 {
-            font-size: 1.875rem; /* text-3xl */
-            font-weight: 600; /* font-semibold */
-            margin-bottom: 1rem; /* mb-4 */
+            font-size: 1.875rem;
+            /* text-3xl */
+            font-weight: 600;
+            /* font-semibold */
+            margin-bottom: 1rem;
+            /* mb-4 */
             color: var(--text-green);
         }
 
@@ -580,60 +830,80 @@
         }
 
         .contact-info a {
-            color: #3B82F6; /* blue-600 */
+            color: #3B82F6;
+            /* blue-600 */
             text-decoration: none;
             transition: color 0.2s ease;
         }
 
         .contact-info a:hover {
-            color: #2563EB; /* blue-800 */
+            color: #2563EB;
+            /* blue-800 */
             text-decoration: underline;
         }
 
         /* Styling for the Instagram link to ensure icon and text are inline and styled */
         .instagram-link {
-            display: inline-flex; /* Use inline-flex to keep it inline with "Follow Us:" */
-            align-items: center; /* Vertically align icon and text */
-            gap: 0.5rem; /* Space between icon and text */
-            text-decoration: none; /* Remove underline */
-            color: var(--dark-text); /* Default text color */
-            font-weight: 600; /* Keep font weight consistent with other list items */
+            display: inline-flex;
+            /* Use inline-flex to keep it inline with "Follow Us:" */
+            align-items: center;
+            /* Vertically align icon and text */
+            gap: 0.5rem;
+            /* Space between icon and text */
+            text-decoration: none;
+            /* Remove underline */
+            color: var(--dark-text);
+            /* Default text color */
+            font-weight: 600;
+            /* Keep font weight consistent with other list items */
             transition: color 0.2s ease;
         }
 
         .instagram-link:hover {
-            color: var(--primary-peach); /* Hover color */
+            color: var(--primary-peach);
+            /* Hover color */
         }
 
-        .instagram-link .fab { /* Target Font Awesome icon within the link */
-            font-size: 1.25rem; /* Adjust size as needed for the icon */
-            color: #E1306C; /* A common Instagram-like pink/red color */
+        .instagram-link .fab {
+            /* Target Font Awesome icon within the link */
+            font-size: 1.25rem;
+            /* Adjust size as needed for the icon */
+            color: #E1306C;
+            /* A common Instagram-like pink/red color */
             transition: color 0.3s ease;
         }
 
         .instagram-link .fab:hover {
-            color: #C13584; /* A slightly darker shade on hover */
+            color: #C13584;
+            /* A slightly darker shade on hover */
         }
 
 
         /* Footer Styling */
         footer {
             background-color: var(--primary-green);
-            padding: 0.6rem 0; /* Further reduced from 0.75rem */
-            margin-top: auto; /* Push footer to the bottom */
+            padding: 0.6rem 0;
+            /* Further reduced from 0.75rem */
+            margin-top: auto;
+            /* Push footer to the bottom */
             text-align: center;
             color: var(--text-green);
-            flex-shrink: 0; /* Prevent footer from shrinking */
+            flex-shrink: 0;
+            /* Prevent footer from shrinking */
         }
 
         footer p {
-            font-size: 0.8rem; /* Further reduced from 0.9rem */
-            margin-bottom: 0.25rem; /* Further reduced from 0.3rem */
+            font-size: 0.8rem;
+            /* Further reduced from 0.9rem */
+            margin-bottom: 0.25rem;
+            /* Further reduced from 0.3rem */
         }
 
         footer p:last-child {
-            font-size: 0.65rem; /* Further reduced from 0.7rem */
-            margin-top: 0.25rem; /* Further reduced from 0.3rem */
+            font-size: 0.65rem;
+            /* Further reduced from 0.7rem */
+            margin-top: 0.25rem;
+            /* Further reduced from 0.3rem */
         }
 
         /* Utility classes for hiding/showing sections */
@@ -652,7 +922,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            z-index: 1000; /* High z-index to be on top */
+            z-index: 1000;
+            /* High z-index to be on top */
             opacity: 0;
             visibility: hidden;
             transition: opacity 0.3s ease, visibility 0.3s ease;
@@ -674,20 +945,23 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transform: scale(0.8); /* Start smaller for animation */
+            transform: scale(0.8);
+            /* Start smaller for animation */
             transition: transform 0.3s ease, opacity 0.3s ease;
             opacity: 0;
         }
 
         .image-modal-overlay.active .image-modal-content {
-            transform: scale(1); /* Scale up to normal size */
+            transform: scale(1);
+            /* Scale up to normal size */
             opacity: 1;
         }
 
         .image-modal-image {
             max-width: 100%;
             max-height: 100%;
-            object-fit: contain; /* Ensure full image is visible */
+            object-fit: contain;
+            /* Ensure full image is visible */
             border-radius: 0.5rem;
         }
 
@@ -713,171 +987,256 @@
 
         /* Responsive adjustments */
         @media (max-width: 768px) {
+
             .header-content .nav-left,
             .header-content .nav-right {
-                display: none; /* Hide desktop nav on mobile */
+                display: none;
+                /* Hide desktop nav on mobile */
             }
 
             .hamburger-button {
-                display: flex; /* Show hamburger on mobile */
+                display: flex;
+                /* Show hamburger on mobile */
             }
 
             .header-content {
-                justify-content: space-between; /* Logo left, hamburger right */
-                padding: 0 1rem; /* Add horizontal padding for header content */
+                justify-content: space-between;
+                /* Logo left, hamburger right */
+                padding: 0 1rem;
+                /* Add horizontal padding for header content */
             }
 
             .header-content .logo-link {
-                margin: 0; /* Remove auto margin for left alignment in mobile header */
+                margin: 0;
+                /* Remove auto margin for left alignment in mobile header */
             }
 
             .header-content .logo-link img {
-                max-width: 80px; /* Adjusted logo size for mobile */
+                max-width: 80px;
+                /* Adjusted logo size for mobile */
             }
-            
+
             /* Main content sections padding for mobile */
             .page-section {
-                padding: 2rem 0; /* Adjust vertical padding, remove horizontal as container handles it */
+                padding: 2rem 0;
+                /* Adjust vertical padding, remove horizontal as container handles it */
             }
 
             .container {
                 /* Increased horizontal padding for mobile content to ensure gaps */
-                padding: 0 1.5rem; /* Adjusted to a consistent, slightly larger padding */
+                padding: 0 1.5rem;
+                /* Adjusted to a consistent, slightly larger padding */
             }
 
             #landing-page h2 {
-                font-size: 2rem; /* Adjusted */
+                font-size: 2rem;
+                /* Adjusted */
             }
+
             #landing-page p {
-                font-size: 0.85rem; /* Adjusted */
+                font-size: 0.85rem;
+                /* Adjusted */
             }
+
             .btn-primary {
-                padding: 0.4rem 1rem; /* Adjusted */
-                font-size: 0.85rem; /* Adjusted */
+                padding: 0.4rem 1rem;
+                /* Adjusted */
+                font-size: 0.85rem;
+                /* Adjusted */
             }
+
             .product-card {
-                padding: 0.75rem; /* Re-added padding to the card itself for the white border around the image */
-                border-radius: 1.5rem; /* Keep the overall card rounded */
+                padding: 0.75rem;
+                /* Re-added padding to the card itself for the white border around the image */
+                border-radius: 1.5rem;
+                /* Keep the overall card rounded */
             }
+
             .product-card img {
-                height: 16rem; /* Adjusted height for mobile */
-                object-fit: cover; /* Changed to cover to ensure image fills and allows rounding */
-                border-radius: 1rem; /* Apply rounding directly to the image */
-                margin-top: 0; /* Ensure no extra margin-top */
-                display: block; /* Ensure image behaves as a block */
+                height: 16rem;
+                /* Adjusted height for mobile */
+                object-fit: cover;
+                /* Changed to cover to ensure image fills and allows rounding */
+                border-radius: 1rem;
+                /* Apply rounding directly to the image */
+                margin-top: 0;
+                /* Ensure no extra margin-top */
+                display: block;
+                /* Ensure image behaves as a block */
             }
+
             .product-card-content {
-                padding: 1rem; /* Existing padding for text */
-                padding-top: 0.75rem; /* Add top padding here for space between image and text */
+                padding: 1rem;
+                /* Existing padding for text */
+                padding-top: 0.75rem;
+                /* Add top padding here for space between image and text */
             }
+
             .product-card h3 {
-                font-size: 1.1rem; /* Adjusted */
-                margin-bottom: 0.75rem; /* Added margin-bottom for spacing with button */
+                font-size: 1.1rem;
+                /* Adjusted */
+                margin-bottom: 0.75rem;
+                /* Added margin-bottom for spacing with button */
             }
+
             /* Product description is removed, so this rule is less critical but kept for other p tags */
             .product-card p {
-                font-size: 0.75rem; /* Adjusted */
+                font-size: 0.75rem;
+                /* Adjusted */
             }
+
             .product-card .whatsapp-btn {
-                padding: 0.4rem 0.7rem; /* Adjusted */
-                font-size: 0.75rem; /* Adjusted */
+                padding: 0.4rem 0.7rem;
+                /* Adjusted */
+                font-size: 0.75rem;
+                /* Adjusted */
             }
+
             .content-card {
-                padding: 1.5rem; /* Adjusted padding for content cards on mobile */
-                width: 100%; /* Ensure content card takes full width of container's content area */
-                max-width: 400px; /* Increased max-width for content cards */
-                margin: 0 auto; /* Center the card */
+                padding: 1.5rem;
+                /* Adjusted padding for content cards on mobile */
+                width: 100%;
+                /* Ensure content card takes full width of container's content area */
+                max-width: 400px;
+                /* Increased max-width for content cards */
+                margin: 0 auto;
+                /* Center the card */
             }
+
             .content-card h3 {
-                font-size: 1.2rem; /* Adjusted */
+                font-size: 1.2rem;
+                /* Adjusted */
             }
-            .content-card p, .content-card ul li {
-                font-size: 0.75rem; /* Adjusted */
+
+            .content-card p,
+            .content-card ul li {
+                font-size: 0.75rem;
+                /* Adjusted */
             }
+
             .contact-info a {
-                font-size: 0.75rem; /* Adjusted */
+                font-size: 0.75rem;
+                /* Adjusted */
             }
-            .instagram-link .fab { /* Target Font Awesome icons on mobile */
-                font-size: 1.25rem; /* Adjusted */
+
+            .instagram-link .fab {
+                /* Target Font Awesome icons on mobile */
+                font-size: 1.25rem;
+                /* Adjusted */
             }
+
             footer p {
-                font-size: 0.75rem; /* Adjusted for mobile */
+                font-size: 0.75rem;
+                /* Adjusted for mobile */
             }
+
             footer p:last-child {
-                font-size: 0.6rem; /* Adjusted for mobile */
+                font-size: 0.6rem;
+                /* Adjusted for mobile */
             }
 
             /* Product grid specific mobile adjustments */
             .product-grid {
-                grid-template-columns: 1fr; /* Force single column on tablets/mobiles */
-                gap: 1.5rem; /* Slightly reduced gap for single column */
-                padding: 0; /* Removed horizontal padding from product-grid here */
+                grid-template-columns: 1fr;
+                /* Force single column on tablets/mobiles */
+                gap: 1.5rem;
+                /* Slightly reduced gap for single column */
+                padding: 0;
+                /* Removed horizontal padding from product-grid here */
             }
 
             /* Ensure individual product cards are centered with max-width */
             .product-card {
-                width: 100%; /* Take full width of its grid cell */
-                max-width: 420px; /* Increased max width for product cards */
-                margin: 0 auto; /* Center the card within its grid column */
+                width: 100%;
+                /* Take full width of its grid cell */
+                max-width: 420px;
+                /* Increased max width for product cards */
+                margin: 0 auto;
+                /* Center the card within its grid column */
             }
         }
 
         @media (max-width: 480px) {
             .header-content .logo-link img {
-                max-width: 70px; /* Even smaller logo size for very small screens */
+                max-width: 70px;
+                /* Even smaller logo size for very small screens */
             }
+
             /* Mobile menu links are already handled by #mobile-menu ul li a */
-            
+
             #landing-page h2 {
-                font-size: 1.6rem; /* Adjusted */
+                font-size: 1.6rem;
+                /* Adjusted */
             }
+
             #landing-page p {
-                font-size: 0.7rem; /* Adjusted */
+                font-size: 0.7rem;
+                /* Adjusted */
             }
+
             .product-grid {
-                gap: 1rem; /* Further reduced gap for very small mobile screens */
+                gap: 1rem;
+                /* Further reduced gap for very small mobile screens */
             }
+
             .container {
-                padding: 0 1rem; /* Consistent padding for very small screens */
+                padding: 0 1rem;
+                /* Consistent padding for very small screens */
             }
+
             /* Ensure individual product cards are centered with max-width for smaller screens too */
             .product-card {
-                max-width: 360px; /* Adjusted max width for very small screens */
+                max-width: 360px;
+                /* Adjusted max width for very small screens */
                 margin: 0 auto;
             }
+
             .product-card img {
-                height: 14rem; /* Adjusted height for very small screens */
-                object-fit: cover; /* Changed to cover to ensure image fills and allows rounding */
-                border-radius: 1rem; /* Set to a specific rem value for rounded rectangle */
-                margin-top: 0; /* Ensure no extra margin-top */
+                height: 14rem;
+                /* Adjusted height for very small screens */
+                object-fit: cover;
+                /* Changed to cover to ensure image fills and allows rounding */
+                border-radius: 1rem;
+                /* Set to a specific rem value for rounded rectangle */
+                margin-top: 0;
+                /* Ensure no extra margin-top */
             }
         }
 
         /* Mobile-specific styles for the landing page image */
         @media (max-width: 768px) {
             .landing-page-image {
-                width: calc(100% - 4rem); /* Increased gap for mobile container padding (2rem on each side) */
-                border-radius: 1rem; /* Consistent rounding */
-                height: 18rem; /* Slightly smaller height on mobile */
-                object-fit: cover; /* Ensure it covers the area and gets rounded */
+                width: calc(100% - 4rem);
+                /* Increased gap for mobile container padding (2rem on each side) */
+                border-radius: 1rem;
+                /* Consistent rounding */
+                height: 18rem;
+                /* Slightly smaller height on mobile */
+                object-fit: cover;
+                /* Ensure it covers the area and gets rounded */
             }
         }
 
         @media (max-width: 480px) {
             .landing-page-image {
-                width: calc(100% - 3rem); /* Increased gap for smaller mobile container padding (1.5rem on each side) */
-                border-radius: 0.75rem; /* Slightly less rounding for very small screens */
-                height: 16rem; /* Even smaller height for very small screens */
-                object-fit: cover; /* Ensure it covers the area and gets rounded */
+                width: calc(100% - 3rem);
+                /* Increased gap for smaller mobile container padding (1.5rem on each side) */
+                border-radius: 0.75rem;
+                /* Slightly less rounding for very small screens */
+                height: 16rem;
+                /* Even smaller height for very small screens */
+                object-fit: cover;
+                /* Ensure it covers the area and gets rounded */
             }
         }
-
     </style>
 </head>
+
 <body>
     <!-- Splash Screen HTML -->
     <div id="splash-screen">
-        <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg" alt="Hues by Husna Logo" class="splash-logo">
+        <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg" alt="Hues by Husna Logo"
+            class="splash-logo">
     </div>
 
     <!-- Main Header Section containing logo and navigation -->
@@ -891,7 +1250,8 @@
 
             <!-- Logo as Home Button -->
             <a href="#" id="logo-home-link" class="logo-link">
-                <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg" alt="Hues by Husna Logo">
+                <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg"
+                    alt="Hues by Husna Logo">
             </a>
 
             <!-- Right Navigation Links (Desktop) -->
@@ -909,6 +1269,21 @@
         </div>
     </header>
 
+    <!-- Promo Running Banner -->
+    <div class="promo-banner">
+        <div class="promo-banner-track">
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+            <span>Onam Sale is Live &bull; 50% Off on Selected items! &bull;</span>
+        </div>
+    </div>
+
+
     <!-- Mobile Menu Overlay -->
     <div class="mobile-menu-overlay" id="mobile-menu-overlay"></div>
 
@@ -916,7 +1291,8 @@
     <nav id="mobile-menu">
         <div class="mobile-menu-header">
             <a href="#" id="mobile-menu-logo-link" class="logo-link">
-                <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg" alt="Hues by Husna Logo">
+                <img src="https://i.ibb.co/bRMxLmTK/1265-DD71-B694-4215-9603-9-F5-DC58-F9011.jpg"
+                    alt="Hues by Husna Logo">
             </a>
             <button class="mobile-menu-close-button" id="mobile-menu-close-button" aria-label="Close menu">
                 &times;
@@ -939,16 +1315,14 @@
                     Made for Little Hearts, With All of Mine.
                 </p>
                 <p>
-                    At Hues by Husna, every tiny stitch carries a piece of my heart. These aren’t just clothes — they’re keepsakes, handcrafted with love, patience, and purpose for your little one’s earliest, most beautiful days.
-                </p>            
-                </div>
-            <img
-                id="landing-carousel-image"
-                src="https://i.ibb.co/1YV5Ds91/image.png"
-                alt="Hues by Husna Welcome"
+                    At Hues by Husna, every tiny stitch carries a piece of my heart. These aren’t just clothes — they’re
+                    keepsakes, handcrafted with love, patience, and purpose for your little one’s earliest, most
+                    beautiful days.
+                </p>
+            </div>
+            <img id="landing-carousel-image" src="https://i.ibb.co/1YV5Ds91/image.png" alt="Hues by Husna Welcome"
                 onerror="this.onerror=null; this.src='https://placehold.co/800x500/CCCCCC/333333?text=Welcome+Image';"
-                class="landing-page-image"
-            />
+                class="landing-page-image" />
             <button id="explore-products-btn" class="btn-primary">
                 Explore Our Collection
             </button>
@@ -960,8 +1334,9 @@
                 <div class="text-center mb-10">
                     <!-- <h2>Coming soon..!</h2> -->
                     <p>
-                        Each dress is a unique blend of delicate crochet artistry and soft, comfortable fabrics, designed for babies from newborn to 10 years.
-                    </p> 
+                        Each dress is a unique blend of delicate crochet artistry and soft, comfortable fabrics,
+                        designed for babies from newborn to 10 years.
+                    </p>
                 </div>
                 <div id="product-grid" class="product-grid">
                     <!-- Products will be dynamically loaded here by JavaScript -->
@@ -979,10 +1354,16 @@
                 <div class="content-card">
                     <h3>Our Story</h3>
                     <p>
-                        Hues by Husna was born from a passion for creating beautiful, comfortable, and unique clothing for babies. We believe that every little one deserves to feel special and adorned in garments that are as unique as they are. Our brand specializes in exquisite dresses where the upper part is meticulously handcrafted with soft crochet, beautifully complementing the comfortable and flowing fabric of the lower part.
+                        Hues by Husna was born from a passion for creating beautiful, comfortable, and unique clothing
+                        for babies. We believe that every little one deserves to feel special and adorned in garments
+                        that are as unique as they are. Our brand specializes in exquisite dresses where the upper part
+                        is meticulously handcrafted with soft crochet, beautifully complementing the comfortable and
+                        flowing fabric of the lower part.
                     </p>
                     <p>
-                        Our journey began with a simple desire to blend traditional crochet artistry with modern children's fashion. Each piece is designed and made with utmost care, ensuring high quality, durability, and comfort for your precious little ones, from newborns up to 10 years old.
+                        Our journey began with a simple desire to blend traditional crochet artistry with modern
+                        children's fashion. Each piece is designed and made with utmost care, ensuring high quality,
+                        durability, and comfort for your precious little ones, from newborns up to 10 years old.
                     </p>
                 </div>
 
@@ -1011,12 +1392,14 @@
                 <div class="content-card contact-info">
                     <h3>Contact Information</h3>
                     <p>
-                        The easiest way to reach us is through WhatsApp for quick responses and personalized assistance regarding our products and orders.
+                        The easiest way to reach us is through WhatsApp for quick responses and personalized assistance
+                        regarding our products and orders.
                     </p>
                     <ul class="space-y-4 text-lg">
                         <li>
                             <span class="font-semibold">WhatsApp:</span>
-                            <a href="https://wa.me/919496837330?text=Hello! I have a general inquiry about Hues by Husna." target="_blank" rel="noopener noreferrer">
+                            <a href="https://wa.me/919496837330?text=Hello! I have a general inquiry about Hues by Husna."
+                                target="_blank" rel="noopener noreferrer">
                                 Chat with us
                             </a>
                         </li>
@@ -1029,7 +1412,8 @@
                         <li>
                             <span class="font-semibold">Follow Us:</span>
                             <!-- Instagram Icon -->
-                            <a href="https://www.instagram.com/hues.by.husna?igsh=MTU1dmI3MzFkenkxbA==" target="_blank" rel="noopener noreferrer" aria-label="Follow us on Instagram" class="instagram-link">
+                            <a href="https://www.instagram.com/hues.by.husna?igsh=MTU1dmI3MzFkenkxbA==" target="_blank"
+                                rel="noopener noreferrer" aria-label="Follow us on Instagram" class="instagram-link">
                                 <i class="fab fa-instagram"></i>
                             </a>
                         </li>
@@ -1059,7 +1443,7 @@
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // --- Splash Screen Logic ---
             const splashScreen = document.getElementById('splash-screen');
             const splashLogo = document.querySelector('.splash-logo');
@@ -1074,7 +1458,7 @@
             setTimeout(() => {
                 splashScreen.classList.add('hidden'); // Trigger splash screen slide-up/fade-out
                 // After the splash screen has finished its transition, remove it from the DOM
-                splashScreen.addEventListener('transitionend', function() {
+                splashScreen.addEventListener('transitionend', function () {
                     splashScreen.remove();
                 }, { once: true });
             }, 2000); // 2000 milliseconds = 2 seconds
@@ -1085,6 +1469,7 @@
             document.getElementById('current-year').textContent = new Date().getFullYear();
 
             // Product data
+            // To customize prices, simply edit the originalPrice (crossed out) and salePrice for each product below.
             const products = [
                 {
                     id: 1,
@@ -1093,6 +1478,8 @@
                     description: 'A charming dress with a delicate daisy crochet top and a soft cotton skirt, perfect for toddlers from 1-3 years.',
                     imageUrl: 'https://i.ibb.co/wN7RqgtT/1-compressed.jpg',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Cherry Bloom Dress. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 2,
@@ -1101,6 +1488,8 @@
                     description: 'An ethereal dress featuring intricate floral crochet on the bodice and a flowing, lightweight fabric skirt for little fairies, suitable for 4-6 years.',
                     imageUrl: 'https://i.ibb.co/LzNcxnNN/2-compressed.jpg',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Rossy Ruffle. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 3,
@@ -1109,6 +1498,8 @@
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active babies aged 2-5 years.',
                     imageUrl: 'https://i.ibb.co/2YgFh6p9/3-compressed.jpg',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Bluebell whimsy. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 4,
@@ -1117,6 +1508,8 @@
                     description: 'An ethereal dress featuring intricate floral crochet on the bodice and a flowing, lightweight fabric skirt for little fairies, suitable for 4-6 years.',
                     imageUrl: 'https://i.ibb.co/chMNx3FB/3.png',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Bear Hug Bliss. Could you please provide more details?',
+                    originalPrice: 800, // [Price Customization] Original price (crossed out)
+                    salePrice: 400,      // [Price Customization] Sale price
                 },
                 {
                     id: 5,
@@ -1125,6 +1518,8 @@
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active babies aged 2-5 years.',
                     imageUrl: 'https://i.ibb.co/27gHKCPd/5.jpg',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Lilac Breeze. Could you please provide more details?',
+                    originalPrice: 1000, // [Price Customization] Original price (crossed out)
+                    salePrice: 500,      // [Price Customization] Sale price
                 },
                 {
                     id: 6,
@@ -1133,6 +1528,8 @@
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active babies aged 2-5 years.',
                     imageUrl: 'https://i.ibb.co/KpNmpWNr/6.png',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Rainbow Bliss Dress. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 7,
@@ -1141,6 +1538,8 @@
                     description: 'An ethereal dress featuring intricate floral crochet on the bodice and a flowing, lightweight fabric skirt for little fairies, suitable for 4-6 years.',
                     imageUrl: 'https://i.ibb.co/gZs5GqMf/7.png',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Ruby Bloom. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 8,
@@ -1149,6 +1548,8 @@
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active babies aged 2-5 years.',
                     imageUrl: 'https://i.ibb.co/0yNxK2p2/8.png',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Buttercup Twirl. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 9,
@@ -1157,6 +1558,8 @@
                     description: 'An ethereal dress featuring intricate floral crochet on the bodice and a flowing, lightweight fabric skirt for little fairies, suitable for 4-6 years.',
                     imageUrl: 'https://i.ibb.co/HfrnTdrM/9.png',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Daisy Crochet Dress. Could you please provide more details?',
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
                 },
                 {
                     id: 10,
@@ -1165,7 +1568,9 @@
                     description: 'Bright and cheerful, this frock has a sunny yellow crochet top and playful ruffled fabric bottom, ideal for active babies aged 2-5 years.',
                     imageUrl: 'https://i.ibb.co/b50CsZ07/10.jpg',
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Strawberry Swirl. Could you please provide more details?',
-                }    
+                    originalPrice: 1500, // [Price Customization] Original price (crossed out)
+                    salePrice: 750,      // [Price Customization] Sale price
+                }
             ];
 
             const pageSections = document.querySelectorAll('.page-section');
@@ -1188,7 +1593,7 @@
             // Carousel variables
             const carouselImages = [
                 'https://i.ibb.co/1YV5Ds91/image.png',
-                'https://i.ibb.co/PZ2h4F3z/FE5-CCE50-1-C10-40-F7-A355-552-D63-E4-DC03.png', 
+                'https://i.ibb.co/PZ2h4F3z/FE5-CCE50-1-C10-40-F7-A355-552-D63-E4-DC03.png',
                 'https://i.ibb.co/QFj4krnj/549-AEEFD-2048-4342-8-F53-0-F1-C96803895.jpg'
             ];
             let currentImageIndex = 0;
@@ -1328,21 +1733,21 @@
 
             // Function to render product cards
             // Function to render product cards
-function renderProducts() {
-    const soldOutProductIds = [2, 3, 6, 8, 9, 10]; // IDs of sold out products
-    productGrid.innerHTML = ''; // Clear existing products
+            function renderProducts() {
+                const soldOutProductIds = [2, 3, 6, 8, 9, 10]; // IDs of sold out products
+                productGrid.innerHTML = ''; // Clear existing products
 
-    // 1. Render the Standard Products
-    products.forEach(product => {
-        const productCard = document.createElement('div');
-        productCard.classList.add('product-card');
-        const isSoldOut = soldOutProductIds.includes(product.id);
+                // 1. Render the Standard Products
+                products.forEach(product => {
+                    const productCard = document.createElement('div');
+                    productCard.classList.add('product-card');
+                    const isSoldOut = soldOutProductIds.includes(product.id);
 
-        let buttonHtml;
-        if (isSoldOut) {
-            buttonHtml = `<span class="whatsapp-btn sold-out-btn">Sold Out</span>`;
-        } else {
-            buttonHtml = `
+                    let buttonHtml;
+                    if (isSoldOut) {
+                        buttonHtml = `<span class="whatsapp-btn sold-out-btn">Sold Out</span>`;
+                    } else {
+                        buttonHtml = `
                 <a
                     href="${product.whatsappLink}"
                     target="_blank"
@@ -1352,9 +1757,23 @@ function renderProducts() {
                     Order Now
                 </a>
             `;
-        }
+                    }
 
-        productCard.innerHTML = `
+                    // Render the price only for non sold-out items if both prices exist
+                    let priceHtml = '';
+                    if (!isSoldOut && product.originalPrice && product.salePrice) {
+                        const discountPercent = Math.round(((product.originalPrice - product.salePrice) / product.originalPrice) * 100);
+                        priceHtml = `
+                <div class="product-price">
+                    <span class="original-price">₹${product.originalPrice.toLocaleString('en-IN')}</span>
+                    <span class="sale-price">₹${product.salePrice.toLocaleString('en-IN')}</span>
+                    <span class="discount-badge">${discountPercent}% OFF</span>
+                </div>
+            `;
+                    }
+
+
+                    productCard.innerHTML = `
             <img
                 src="${product.imageUrl}"
                 alt="${product.name}"
@@ -1363,21 +1782,22 @@ function renderProducts() {
             <div class="product-card-content">
                 <h3>${product.name}</h3>
                 <p class="product-size">Size: ${product.size}</p>
+                ${priceHtml}
                 ${buttonHtml}
             </div>
         `;
-        const productImage = productCard.querySelector('img');
-        productImage.addEventListener('click', function() {
-            openImageModal(this.src);
-        });
+                    const productImage = productCard.querySelector('img');
+                    productImage.addEventListener('click', function () {
+                        openImageModal(this.src);
+                    });
 
-        productGrid.appendChild(productCard);
-    });
+                    productGrid.appendChild(productCard);
+                });
 
-    // 2. Add the FIRST Custom Order Card
-    const customOrderCard = document.createElement('div');
-    customOrderCard.classList.add('product-card');
-    customOrderCard.innerHTML = `
+                // 2. Add the FIRST Custom Order Card
+                const customOrderCard = document.createElement('div');
+                customOrderCard.classList.add('product-card');
+                customOrderCard.innerHTML = `
         <img
             src="https://i.ibb.co/mVF0ZWp0/customise.png"
             alt="Customise Your Dress"
@@ -1397,17 +1817,17 @@ function renderProducts() {
             </a>
         </div>
     `;
-    productGrid.appendChild(customOrderCard);
+                productGrid.appendChild(customOrderCard);
 
-    const customImage = customOrderCard.querySelector('.customise-image');
-    customImage.addEventListener('click', function() {
-        openImageModal(this.src);
-    });
+                const customImage = customOrderCard.querySelector('.customise-image');
+                customImage.addEventListener('click', function () {
+                    openImageModal(this.src);
+                });
 
-    // 3. Add the SECOND Custom Order Card (NEW)
-    const customOrderCard2 = document.createElement('div');
-    customOrderCard2.classList.add('product-card');
-    customOrderCard2.innerHTML = `
+                // 3. Add the SECOND Custom Order Card (NEW)
+                const customOrderCard2 = document.createElement('div');
+                customOrderCard2.classList.add('product-card');
+                customOrderCard2.innerHTML = `
         <img
             src="https://i.ibb.co/pBDLBW8S/IMG-3178.jpg" 
             alt="Customise Option 2"
@@ -1427,39 +1847,39 @@ function renderProducts() {
             </a>
         </div>
     `;
-    productGrid.appendChild(customOrderCard2);
+                productGrid.appendChild(customOrderCard2);
 
-    // Add event listener for the second custom image modal
-    const customImage2 = customOrderCard2.querySelector('.customise-image');
-    customImage2.addEventListener('click', function() {
-        openImageModal(this.src);
-    });
-}
+                // Add event listener for the second custom image modal
+                const customImage2 = customOrderCard2.querySelector('.customise-image');
+                customImage2.addEventListener('click', function () {
+                    openImageModal(this.src);
+                });
+            }
 
-// Event Listeners for Desktop Navigation
-navLinks.forEach(link => {
-    link.addEventListener('click', function(event) {
-        event.preventDefault();
-        let pageId;
-        if (this.id === 'nav-home') {
-            pageId = 'landing-page';
-        } else {
-            pageId = this.id.replace('nav-', '') + '-page';
-        }
+            // Event Listeners for Desktop Navigation
+            navLinks.forEach(link => {
+                link.addEventListener('click', function (event) {
+                    event.preventDefault();
+                    let pageId;
+                    if (this.id === 'nav-home') {
+                        pageId = 'landing-page';
+                    } else {
+                        pageId = this.id.replace('nav-', '') + '-page';
+                    }
                     showPage(pageId);
                 });
             });
 
             // Event Listener for "Explore Our Collection" button on Landing Page
             if (exploreBtn) {
-                exploreBtn.addEventListener('click', function() {
+                exploreBtn.addEventListener('click', function () {
                     showPage('products-page');
                 });
             }
 
             // Event Listener for Logo Home Button (desktop header)
             if (logoHomeLink) {
-                logoHomeLink.addEventListener('click', function(event) {
+                logoHomeLink.addEventListener('click', function (event) {
                     event.preventDefault();
                     showPage('landing-page');
                 });
@@ -1479,7 +1899,7 @@ navLinks.forEach(link => {
             // Event Listener for the logo inside the mobile menu
             const mobileMenuLogoLink = document.getElementById('mobile-menu-logo-link');
             if (mobileMenuLogoLink) {
-                mobileMenuLogoLink.addEventListener('click', function(event) {
+                mobileMenuLogoLink.addEventListener('click', function (event) {
                     event.preventDefault();
                     showPage('landing-page');
                 });
@@ -1490,7 +1910,7 @@ navLinks.forEach(link => {
                 imageModalCloseButton.addEventListener('click', closeImageModal);
             }
             if (imageModalOverlay) {
-                imageModalOverlay.addEventListener('click', function(event) {
+                imageModalOverlay.addEventListener('click', function (event) {
                     // Close only if clicking on the overlay itself, not the image content
                     if (event.target === imageModalOverlay) {
                         closeImageModal();
@@ -1501,7 +1921,7 @@ navLinks.forEach(link => {
 
             // Event Listeners for Mobile Navigation Links
             mobileNavLinks.forEach(link => {
-                link.addEventListener('click', function(event) {
+                link.addEventListener('click', function (event) {
                     event.preventDefault();
                     let pageId;
                     if (this.id === 'mobile-nav-home') {
@@ -1520,4 +1940,5 @@ navLinks.forEach(link => {
         });
     </script>
 </body>
+
 </html>
