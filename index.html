@@ -1570,6 +1570,46 @@
                     whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Strawberry Swirl. Could you please provide more details?',
                     originalPrice: 1500, // [Price Customization] Original price (crossed out)
                     salePrice: 750,      // [Price Customization] Sale price
+                },
+                {
+                    id: 11,
+                    name: 'Little lilac dress',
+                    size: '1-1.5 years',
+                    description: 'A charming handcrafted lilac dress featuring delicate crochet details and a soft, comfortable fit, perfect for little ones aged 1-1.5 years.',
+                    imageUrl: 'https://i.ibb.co/HDZt74q2/IMG-20260817-WA0002.jpg',
+                    whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Little lilac dress. Could you please provide more details?',
+                    originalPrice: 800, // [Price Customization] Original price (crossed out)
+                    salePrice: 400,      // [Price Customization] Sale price
+                },
+                {
+                    id: 12,
+                    name: 'Lilac Meadow',
+                    size: '1-1.5 years',
+                    description: 'An enchanting lilac dress inspired by blooming meadows, featuring intricate floral crochet on the bodice and a graceful flow, ideal for toddlers aged 1-1.5 years.',
+                    imageUrl: 'https://i.ibb.co/7mD4hzc/IMG-20260816-WA0037.jpg',
+                    whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Lilac Meadow. Could you please provide more details?',
+                    originalPrice: 800, // [Price Customization] Original price (crossed out)
+                    salePrice: 400,      // [Price Customization] Sale price
+                },
+                {
+                    id: 13,
+                    name: 'Ponnona Skirt',
+                    size: '2-3 years',
+                    description: 'A festive and graceful traditional skirt with beautiful handcrafted details, perfect for festive celebrations for kids aged 2-3 years.',
+                    imageUrl: 'https://i.ibb.co/mrmZ8SRN/IMG-20260816-WA0035.jpg',
+                    whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Ponnona Skirt. Could you please provide more details?',
+                    originalPrice: 500, // [Price Customization] Original price (crossed out)
+                    salePrice: 250,      // [Price Customization] Sale price
+                },
+                {
+                    id: 14,
+                    name: 'Little Kitty Dress',
+                    size: '1-1.5 years',
+                    description: 'A sweet and playful dress featuring adorable kitty-inspired crochet motifs and a soft skirt, designed for little ones aged 1-1.5 years.',
+                    imageUrl: 'https://i.ibb.co/Lz3Yjt97/IMG-20260816-WA0036.jpg',
+                    whatsappLink: 'https://wa.me/919496837330?text=Hello! I am interested in the Little Kitty Dress. Could you please provide more details?',
+                    originalPrice: 800, // [Price Customization] Original price (crossed out)
+                    salePrice: 400,      // [Price Customization] Sale price
                 }
             ];
 
@@ -1737,8 +1777,16 @@
                 const soldOutProductIds = [2, 3, 6, 8, 9, 10]; // IDs of sold out products
                 productGrid.innerHTML = ''; // Clear existing products
 
+                // Display available (in-stock) products first, and sold-out products last
+                const sortedProducts = [...products].sort((a, b) => {
+                    const aSold = soldOutProductIds.includes(a.id);
+                    const bSold = soldOutProductIds.includes(b.id);
+                    if (aSold === bSold) return 0;
+                    return aSold ? 1 : -1;
+                });
+
                 // 1. Render the Standard Products
-                products.forEach(product => {
+                sortedProducts.forEach(product => {
                     const productCard = document.createElement('div');
                     productCard.classList.add('product-card');
                     const isSoldOut = soldOutProductIds.includes(product.id);
